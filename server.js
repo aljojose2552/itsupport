@@ -7,14 +7,13 @@ dotenv.config();
 
 const app = express();
 
-// CORS setup for frontend
-app.use(cors({ origin: "http://localhost:3000" }));
-
-// Middleware to parse JSON requests
-app.use(express.json());
+// Middleware setup
+app.use(cors({ origin: "http://localhost:3000" }));  // CORS setup for frontend
+app.use(express.json());  // Middleware to parse JSON requests
 
 // Routes
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));  // Authentication routes
+app.use("/api/tickets", require("./routes/ticketRoutes"));  // Ticket management routes
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
